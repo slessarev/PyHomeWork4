@@ -4,5 +4,4 @@
 
 list_1 = set(map(int, input().split()))
 list_2 = set(map(int, input().split()))
-# result = {}
-print(list_1.union(list_2))
+print(list_1.intersection(list_2))
