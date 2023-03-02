@@ -10,11 +10,36 @@
 # Input: 2 2 1 3 2
 # Output: 7
 
-list_1 = list(map(int, input().split()))
-max = list_1[0] + list_1[-1] + list_1[-2]
-i = -2
-while i < len(list_1)-1:
-    if max < (list_1[i-1] + list_1[i] + list_1[i+1]):
-        max = list_1[i-1] + list_1[i] + list_1[i+1]
-    i+=1    
+# list_1 = list(map(int, input().split()))
+# max = list_1[0] + list_1[-1] + list_1[-2]
+# i = -2
+# while i < len(list_1)-1:
+#     if max < (list_1[i-1] + list_1[i] + list_1[i+1]):
+#         max = list_1[i-1] + list_1[i] + list_1[i+1]
+#     i+=1
+# print(max)
+
+from random import randint
+
+garden = []
+k = 3  # количество кустов которые обрабатывает машина в один момент. не может быть четным
+for i in range(10):
+    garden.append(randint(0, 5))
+print(garden)
+
+# скопировал в конец k-1 первых элементов
+i = 0
+while i < k-1:
+    garden.append(garden[i])
+    i += 1
+print(garden)
+
+# иду просто по списку вперед до последнего элемента. складываю и сравниваю с максимумом
+max = 0
+for i in range(len(garden)-k):
+    sum = 0
+    for j in range(i, i+k):
+        sum += garden[j]
+    if max < sum:
+        max = sum
 print(max)
